@@ -6,7 +6,7 @@ This project offers a web-based application designed to assess the environmental
 
 - 🌿 **Product Name Extraction:** Scrapes product names from URLs provided by the user.
 - 🔗 **Groq API Integration:** Retrieves environmental data for products using the Groq API.
-- 🧠 **Impact Prediction:** Utilizes a pre-trained machine learning model to forecast environmental impact.
+- 🧠 **Impact Prediction:** Utilizes a machine learning model to forecast environmental impact.
 - 💻 **User-Friendly Interface:** Provides a simple and clean interface for user interaction.
 
 ## Folder Structure
