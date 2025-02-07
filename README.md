@@ -6,7 +6,7 @@ This project offers a web-based application designed to assess the environmental
 
 - 🌿 **Product Name Extraction:** Scrapes product names from URLs provided by the user.
 - 🔗 **Groq API Integration:** Retrieves environmental data for products using the Groq API.
-- 🧠 **Impact Prediction:** Utilizes a machine learning model to forecast environmental impact.
+- 🧠 **Impact Prediction:** Utilizes a pre-trained machine learning model to forecast environmental impact.
 - 💻 **User-Friendly Interface:** Provides a simple and clean interface for user interaction.
 
 ## Folder Structure
@@ -89,6 +89,25 @@ The pre-trained model (`environmental_impact_model.pkl`) predicts the environmen
 - ✅ **Safe to Use:** Score <= 2
 - ⚠️ **Use in Moderation:** 2 < Score <= 5
 - ❌ **Not Safe to Use:** Score > 5
+
+## Workflow
+
+Below is the high-level workflow of the application:
+
+1. 🌐 **User Interaction:**
+   - User enters a product URL in the web interface.
+
+2. 📥 **Data Extraction:**
+   - The backend scrapes the product name from the given URL using BeautifulSoup.
+
+3. 🔗 **API Request:**
+   - The Groq API is called with the product name to retrieve environmental attributes.
+
+4. 🧠 **Model Prediction:**
+   - The retrieved attributes are passed to the pre-trained machine learning model to predict the environmental impact.
+
+5. 📊 **Result Presentation:**
+   - The prediction results are displayed on the frontend, showing impact categories and recommendations.
 
 ## Troubleshooting
 
