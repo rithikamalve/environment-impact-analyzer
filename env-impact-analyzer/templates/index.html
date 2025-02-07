@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Impact Calculator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🌍</div>
+            <h1>Eco Impact Calculator</h1>
+            <p>Discover the environmental footprint of products instantly</p>
+        </header>
+
+        <div class="content">
+            <!-- Input Form -->
+            <div class="card form-card">
+                <div class="card-header">
+                    <span class="card-icon">🔍</span>
+                    <h2>Analyze Product</h2>
+                </div>
+                <form id="urlForm" method="POST" action="/get_product_name">
+                    <div class="form-group">
+                        <label for="productUrl">Enter Product URL</label>
+                        <div class="url-input">
+                            <input 
+                                type="url" 
+                                id="productUrl" 
+                                name="url" 
+                                placeholder="https://example.com/product" 
+                                required
+                            >
+                            <span class="link-icon">🔗</span>
+                        </div>
+                        <p class="input-help">Paste the official product URL to analyze its environmental impact</p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Analyze Impact</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Display -->
+            {% if product_info %}
+            <div class="card results-card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h2>Impact Analysis</h2>
+                </div>
+                
+                <div class="score-display">
+                    <div class="score-ring">
+                        <div class="score">
+                            <span id="impactScore">{{ prediction_result['score'] }}</span>
+                            <span class="score-label">Impact Score</span>
+                        </div>
+                    </div>
+                    <span id="classification" class="classification">{{ prediction_result['classification'] }}</span>
+                </div>
+
+                <div class="metrics">
+                    <div class="metric water">
+                        <div class="metric-header">
+                            <div class="icon">💧</div>
+                            <h3>Water Usage</h3>
+                        </div>
+                        <div class="metric-value">
+                            <span id="waterValue">{{ product_info['Water Usage (L)'] }}</span>
+                            <span class="unit">Liters</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="bar-fill water-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="metric carbon">
+                        <div class="metric-header">
+                            <div class="icon">🏭</div>
+                            <h3>Carbon Footprint</h3>
+                        </div>
+                        <div class="metric-value">
+                            <span id="carbonValue">{{ product_info['Carbon Footprint (kg)'] }}</span>
+                            <span class="unit">kg CO₂</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="bar-fill carbon-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="metric energy">
+                        <div class="metric-header">
+                            <div class="icon">⚡</div>
+                            <h3>Energy Usage</h3>
+                        </div>
+                        <div class="metric-value">
+                            <span id="energyValue">{{ product_info['Energy Consumption (kWh)'] }}</span>
+                            <span class="unit">kWh</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="bar-fill energy-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="impact-level">
+                    <div class="impact-header">
+                        <span class="impact-icon">📈</span>
+                        <span class="label">Overall Impact Level</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="impactBar" class="progress"></div>
+                    </div>
+                    <div class="labels">
+                        <span class="low">Low Impact</span>
+                        <span class="medium">Moderate</span>
+                        <span class="high">High Impact</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
