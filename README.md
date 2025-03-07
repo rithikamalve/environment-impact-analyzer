@@ -1,4 +1,4 @@
-# Environmental Impact Analyzer
+# EcoQuant AI
 
 This project offers a web-based application designed to assess the environmental impact of products using machine learning. By analyzing product attributes such as water usage, carbon footprint, and energy consumption, the system predicts their environmental impact.
 
