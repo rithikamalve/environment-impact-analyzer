@@ -95,7 +95,7 @@ def get_product_name(url):
 # Fetch environmental data from Groq API
 def fetch_groq_data(product_name):
     print(f"[INFO] Starting Groq data fetch for product: {product_name}")
-    API_KEY="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"
+    API_KEY= os.getenv("GROQ_API_KEY")
     client = Groq(api_key=API_KEY)  # Make sure this is valid
     try:
         if not product_name:
