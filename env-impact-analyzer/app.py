@@ -57,6 +57,8 @@ def save_response_content(response, destination):
 
 load_dotenv()
 
+import cloudpickle  # add this import at the top
+
 file_id = "1ZPB6xywQSmoDFDD1-zcGF3mHYbxFesPt"
 destination = "environmental_pipeline.pkl"
 
@@ -70,10 +72,11 @@ if not os.path.exists(destination):
 # Load the model only once
 try:
     with open(destination, "rb") as f:
-        model = pickle.load(f)
+        model = cloudpickle.load(f)  # change here from pickle.load to cloudpickle.load
     print("[INFO] Model loaded successfully.")
 except Exception as e:
     print("[ERROR] Failed to load model:", e)
+
 
 
 
