@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoQuant</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🌍</div>
+            <h1>EcoQuant</h1>
+            <p>Discover the environmental footprint of your cosmetics instantly</p>
+        </header>
+
+        <div class="content">
+            <!-- Input Form -->
+            <div class="card form-card">
+                <div class="card-header">
+                    <span class="card-icon">🔍</span>
+                    <h2>Analyze Product</h2>
+                </div>
+                <form id="urlForm" method="POST" action="/get_product_name">
+                    <div class="form-group">
+                        <label for="productUrl">Enter Product URL</label>
+                        <div class="url-input">
+                            <input 
+                                type="url" 
+                                id="productUrl" 
+                                name="url" 
+                                placeholder="https://example.com/product" 
+                                required
+                            >
+                            <span class="link-icon">🔗</span>
+                        </div>
+                        <p class="input-help">Paste the official product URL to analyze its environmental impact</p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Analyze Impact</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Display -->
+            {% if product_info %}
+            <div class="card results-card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h2>Impact Analysis</h2>
+                </div>
+                <p class="product-name-display">Product Analyzed: <strong>{{ product_name }}</strong></p>
+
+                <br>
+                <div class="score-display">
+                    <div class="score-ring">
+                        <div class="score">
+                            <span id="impactScore">{{ prediction_result['score'] }}</span>
+                            <span class="score-label">Impact Score</span>
+                        </div>
+                    </div>
+                    <span id="classification" class="classification">{{ prediction_result['classification'] }}</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
