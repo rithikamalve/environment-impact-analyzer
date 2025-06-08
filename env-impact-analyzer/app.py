@@ -59,8 +59,8 @@ load_dotenv()
 
 import cloudpickle  # add this import at the top
 
-file_id = "1PplK-5JNZbfmxUcaSUOFN0WEp56cWN-Z"
-destination = "environmental_pipeline_v5.pkl"
+file_id = "1hi6CH4SR_UY4uTwH9r-iTzBOLmEKUZY2"
+destination = "environmental_pipeline_v6.pkl"
 
 model = None
 
@@ -287,7 +287,11 @@ def predict_environmental_impact(product_data):
         input_df['resource_efficiency'] = (input_df['water_usage_liters'] + input_df['energy_consumption_kwh']) / 2
         
         # Load the saved pipeline
-        model = joblib.load("environmental_pipeline.pkl")
+       global model
+       if model is None:
+           with open("environmental_pipeline_v6.pkl", "rb") as f:
+               model = cloudpickle.load(f)
+
         
         # Predict using the loaded pipeline
         output = model.predict(input_df)[0]
