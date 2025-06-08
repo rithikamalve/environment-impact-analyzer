@@ -287,10 +287,10 @@ def predict_environmental_impact(product_data):
         input_df['resource_efficiency'] = (input_df['water_usage_liters'] + input_df['energy_consumption_kwh']) / 2
         
         # Load the saved pipeline
-       global model
-       if model is None:
-           with open("environmental_pipeline_v6.pkl", "rb") as f:
-               model = cloudpickle.load(f)
+        global model
+        if model is None:
+            with open("environmental_pipeline_v6.pkl", "rb") as f:
+                model = cloudpickle.load(f)
 
         
         # Predict using the loaded pipeline
