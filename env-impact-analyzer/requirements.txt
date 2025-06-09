@@ -9,3 +9,4 @@ psutil==6.1.0
 groq==0.23.1
 beautifulsoup4==4.12.3
 transformers==4.51.2
+torch==2.3.0
