@@ -57,7 +57,6 @@ def save_response_content(response, destination):
 
 load_dotenv()
 
-import cloudpickle  # add this import at the top
 
 file_id = "1hi6CH4SR_UY4uTwH9r-iTzBOLmEKUZY2"
 destination = "environmental_pipeline_v6.pkl"
@@ -72,14 +71,11 @@ if not os.path.exists(destination):
 # Load the model only once
 try:
     with open(destination, "rb") as f:
-        model = cloudpickle.load(f)  # change here from pickle.load to cloudpickle.load
+        model = joblib.load(f)  
     print("[INFO] Model loaded successfully.")
+    print(f"[INFO] Loaded model type: {type(model)}")
 except Exception as e:
     print("[ERROR] Failed to load model:", e)
-
-
-
-
 
 app = Flask(__name__)
 
@@ -290,7 +286,7 @@ def predict_environmental_impact(product_data):
         global model
         if model is None:
             with open("environmental_pipeline_v6.pkl", "rb") as f:
-                model = cloudpickle.load(f)
+                model = joblib.load(f)
 
         
         # Predict using the loaded pipeline
