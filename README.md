@@ -1,4 +1,4 @@
-# Environmental Impact Analyzer for Cosmetic Products
+# Environmental Impact Analyzer for Cosmetic Products (a.k.a EcoQuant AI)
 
 Welcome to the **Environmental Impact Analyzer**, a machine learning-powered web application designed to evaluate the sustainability of cosmetic and personal care products. By leveraging a synthetic dataset and a stacking ensemble model, this tool calculates an **Environmental Impact Score (EIS)** for products based on their ecological footprint, empowering users to make eco-conscious choices.
 
